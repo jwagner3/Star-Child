@@ -5,30 +5,30 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    private Vector3 worldpos;
-    private float mouseX;
-    private float mouseY;
-    private float cameraDif;
+    //Public variable to store a reference to the player game object
+    public float turnSpeed = 4.0f;
+    public Transform player;
 
-    public Camera mainCamera;
+    public float height = 1f;
+    public float distance = 2f;
 
-    public GameObject fpc;
+    private Vector3 offsetX;
+    private Vector3 offsetY;
 
-    void Start()
+    public void Start()
     {
-        cameraDif = mainCamera.transform.position.y - fpc.transform.position.y;
+
+        offsetX = new Vector3(0, height , distance);
+        offsetY = new Vector3(0, 0, distance);
+
     }
 
-    void LookAtMouse()
-    {
-        mouseX = Input.mousePosition.x;
-
-        mouseY = Input.mousePosition.y;
-
-        worldpos = mainCamera.ScreenToWorldPoint(new Vector3(mouseX, mouseY, cameraDif));
-
-        Vector3 turretLookDirection = new Vector3(worldpos.x, fpc.transform.position.y, worldpos.z);
-
-        fpc.transform.LookAt(turretLookDirection);
-    }
+   public void LateUpdate()
+        {
+            offsetX = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offsetX;
+            offsetY = Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * turnSpeed, Vector3.right) * offsetY;
+            transform.position = player.position + offsetX + offsetY;
+            transform.LookAt(player.position);
+        }
+    
 }

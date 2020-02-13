@@ -17,16 +17,19 @@ public class CharacterScript : MonoBehaviour
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
+
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Physics.Raycast(ray, out hit, 100))
+        if (Physics.Raycast(ray, out hit, 1000))
         {
             transform.LookAt(hit.point);
-            //CameraRotate();
-            //StartCoroutine("cameraTimer");
+
         }
-        //Feed moveDirection with input.
+
+
+
+
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Zorical"), Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
             //Multiply it by speed.
@@ -39,15 +42,6 @@ public class CharacterScript : MonoBehaviour
 
 
 
-    // IEnumerator cameraTimer()
-    //{
-    //    yield return new WaitForSeconds(.1f);
-    //    CameraRotate();
-    //}
-        
-    //private void CameraRotate()
-    //{
-    //    mainCamera.transform.rotation = gameObject.transform.rotation;
-    //}
+    
        
     }
