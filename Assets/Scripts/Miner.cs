@@ -14,12 +14,13 @@ public class Miner : MonoBehaviour
     int MaxDist = 10;
     int MinDist = 5;
 
-
+    public CharacterScript playerScript;
+    public float playerHP;
 
 
     void Start()
     {
-
+        
     }
 
     void Update()
@@ -40,5 +41,7 @@ public class Miner : MonoBehaviour
 
         }
     }
+
+   
 }
 
