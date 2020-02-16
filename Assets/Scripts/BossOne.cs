@@ -8,12 +8,14 @@ public class BossOne : MonoBehaviour
     public GameObject miner;
     public Transform player;
     public GameObject growingExplosion;
+    public float hP = 1000;
     bool explosionTimer = true;
     int MoveSpeed = 4;
     int MaxDist = 10;
     int MinDist = 50;
     int radius = 100;
     float power = 100;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +34,7 @@ public class BossOne : MonoBehaviour
 
         if (Vector3.Distance(player.position, gameObject.transform.position) <= MinDist && explosionTimer)
         {
-            Debug.Log("spawn");
+           
 
             StartCoroutine("Explosion");
             explosionTimer = false;

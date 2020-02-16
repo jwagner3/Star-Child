@@ -14,7 +14,9 @@ public class CharacterScript : MonoBehaviour
     public float curHP;
     private float healthBarlenght;
 
-    public bool boostUsed;
+    
+
+    public bool boostUsed = false;
 
     public Transform launcher;
     public GameObject projectile;
@@ -26,7 +28,8 @@ public class CharacterScript : MonoBehaviour
     public Texture2D healthBarTexture;
     public GUIStyle healthBar;
      Renderer darkMode;
-    public Color bravoSix;
+    public Material bravoSix;
+    public Material bravoSeven;
 
     void OnGUI()
     {
@@ -38,8 +41,8 @@ public class CharacterScript : MonoBehaviour
 
     public void Start()
     {
-        bravoSix = Color.black;
-        darkMode = gameObject.GetComponent<Renderer>();
+        
+       darkMode = gameObject.GetComponent<Renderer>();
         curHP = maxHP;
         healthBarlenght = Screen.width / 2;
     }
@@ -73,14 +76,22 @@ public class CharacterScript : MonoBehaviour
             speed *= 2;
             boostUsed = true;
         }
+        if (!boostUsed)
+        {
+            gameObject.GetComponent<Renderer>().material = bravoSeven;
+            DynamicGI.UpdateEnvironment();
+        }
         if (boostUsed)
         {
-            darkMode.material.SetColor("_EMISSION", Color.black);
+            gameObject.GetComponent<Renderer>().material = bravoSix;
             DynamicGI.UpdateEnvironment();
+            StartCoroutine("BoostCooldown");
         }
         if (Input.GetKeyDown("r"))
         {
             Shoot(speed);
+            curHP -= 50;
+            
         }
 
 
@@ -125,24 +136,27 @@ public class CharacterScript : MonoBehaviour
 
     public void Shoot(float speed)
     {
-        Vector3 screenMousePos = Input.mousePosition;
+        //It works! It shoots the projectile right!
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-    // Turn that screen position into the actual position in the world.
-    Vector2 mousePos = Camera.main.ScreenToWorldPoint(screenMousePos);
+        if (Physics.Raycast(ray, out hit, 1000))
+        {
+            GameObject bullet = Instantiate(projectile, transform.position, transform.rotation);
+            bullet.transform.LookAt(hit.point);
 
-    // Find out the direction between the player and the mouse pointer.
-    Vector2 direction = mousePos - (Vector2)transform.position;
-        // Normalize the direction and multiply by bullet speed.
-        direction.Normalize();
-        direction *= speed;
-
-        // Spawn the bullet from the prefab.
-        GameObject bullet = Instantiate(projectile, transform.position, Quaternion.identity);
-
-        // Find the BulletScript prefab on that spawned bullet, and set it's velocity component.
-        bullet.GetComponent<SolarFlareBlast>().velocity = direction;
+           
+            
+        //    bullet.GetComponent<Rigidbody>().velocity = (_hit.point - transform.position).normalized * speed;
+        }
     }
 
+    //Boost ability Cooldown
+    public IEnumerator BoostCooldown()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        boostUsed = false;
+    }
 
 
 }
