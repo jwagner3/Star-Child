@@ -15,6 +15,7 @@ public class BossOne : MonoBehaviour
     int MinDist = 50;
     int radius = 100;
     float power = 100;
+    public GameObject starChunk;
     
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,11 @@ public class BossOne : MonoBehaviour
             StartCoroutine("Explosion");
             explosionTimer = false;
         }
+        if(hP <= 0)
+        {
+            Instantiate(starChunk, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 
 
@@ -57,6 +63,15 @@ public class BossOne : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(5);
         explosionTimer = true;  
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Solar Flare")
+        {
+            Debug.Log("hit");
+            hP -= 100;
+        }
     }
 }
     

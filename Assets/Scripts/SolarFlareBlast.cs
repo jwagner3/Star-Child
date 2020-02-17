@@ -11,9 +11,7 @@ public class SolarFlareBlast : MonoBehaviour
     public float counters;
     Vector3 setRotation;
 
-     BossOne bossOneScript;
-    public GameObject bossOne;
-    public float boss1HP = 1000;
+    
     // Use this for initialization
     void Awake()
     {
@@ -25,8 +23,7 @@ public class SolarFlareBlast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bossOneScript = bossOne.GetComponent<BossOne>();
-        boss1HP = bossOne.GetComponent<BossOne>().hP;
+        
 
         //It works!!! Projectiles move where you shoot them;
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
@@ -42,18 +39,9 @@ public class SolarFlareBlast : MonoBehaviour
                 
                 Destroy(collision.gameObject);
             }
-        if(collision.gameObject.tag == "Boss")
-        {
-           
-            if (boss1HP <= 0)
-            {
-                Debug.Log("hitBoss");
-                Destroy(collision.gameObject);
-
-            }
-
-            boss1HP -= 100;
+     
+           if(collision.gameObject.tag == "Boss")
             Destroy(gameObject);
-        }
+        
     }
 }

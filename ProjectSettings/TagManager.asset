@@ -8,6 +8,8 @@ TagManager:
   - Miner
   - Explosion
   - Boss
+  - Solar Flare
+  - Star Chunk 1
   layers:
   - Default
   - TransparentFX

@@ -9,18 +9,18 @@ public class CameraController : MonoBehaviour
     public float turnSpeed = 4.0f;
     public Transform player;
 
-    public float height = 1f;
-    public float distance = 2f;
+    public float height = 2f;
+    public float distance = 4f;
 
     private Vector3 offsetX;
     private Vector3 offsetY;
 
     public void Start()
     {
-
+        DontDestroyOnLoad(gameObject);
         offsetX = new Vector3(0, height , distance);
         offsetY = new Vector3(0, 0, distance);
-
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
    public void LateUpdate()

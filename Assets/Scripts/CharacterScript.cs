@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class CharacterScript : MonoBehaviour
@@ -14,7 +15,7 @@ public class CharacterScript : MonoBehaviour
     public float curHP;
     private float healthBarlenght;
 
-    
+    public Scene Level2;
 
     public bool boostUsed = false;
 
@@ -41,7 +42,7 @@ public class CharacterScript : MonoBehaviour
 
     public void Start()
     {
-        
+        DontDestroyOnLoad(gameObject);
        darkMode = gameObject.GetComponent<Renderer>();
         curHP = maxHP;
         healthBarlenght = Screen.width / 2;
@@ -131,6 +132,10 @@ public class CharacterScript : MonoBehaviour
         {
             curHP -= 100;
 
+        }
+        if(other.gameObject.tag == "Star Chunk 1")
+        {
+            SceneManager.LoadScene("Level 2");
         }
     }
 
