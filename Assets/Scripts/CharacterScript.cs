@@ -22,6 +22,7 @@ public class CharacterScript : MonoBehaviour
     public Transform launcher;
     public GameObject projectile;
     public Rigidbody projectileR;
+    public GameObject bossOne;
 
     private Vector3 moveDirection = Vector3.zero;
     
@@ -74,7 +75,7 @@ public class CharacterScript : MonoBehaviour
         //speed boost
         if (Input.GetKeyDown(KeyCode.LeftShift) && !boostUsed)
         {
-            speed *= 2;
+            speed = 5;
             boostUsed = true;
         }
         if (!boostUsed)
@@ -94,7 +95,7 @@ public class CharacterScript : MonoBehaviour
             curHP -= 50;
             
         }
-
+        if(gameObject.FindGameObjectsWithTag()
 
     }
 

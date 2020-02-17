@@ -6,13 +6,15 @@ using UnityEngine;
 
 public class Miner : MonoBehaviour
 {
- 
 
 
+    public AudioSource minerNoise;
     public Transform Player;
     int MoveSpeed = 4;
     int MaxDist = 10;
     int MinDist = 5;
+
+    public ParticleSystem deathExplosion;
 
     public CharacterScript playerScript;
     public float playerHP;
@@ -20,7 +22,8 @@ public class Miner : MonoBehaviour
 
     void Start()
     {
-        
+        minerNoise.Play();
+        deathExplosion.Stop();   
     }
 
     void Update()
@@ -42,6 +45,25 @@ public class Miner : MonoBehaviour
         }
     }
 
-   
+    public void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Solar Flare")
+        {
+
+            StartCoroutine("Timer");
+
+        }
+    }
+
+
+    public IEnumerator Timer()
+    {
+        deathExplosion.Play();
+        if (deathExplosion.isPlaying == true)
+            Debug.Log("spicy");
+        yield return new WaitForSecondsRealtime(1);
+        Destroy(gameObject);
+    }
+
 }
 
