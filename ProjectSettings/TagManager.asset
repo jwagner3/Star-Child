@@ -10,6 +10,7 @@ TagManager:
   - Boss
   - Solar Flare
   - Star Chunk 1
+  - Boss One
   layers:
   - Default
   - TransparentFX

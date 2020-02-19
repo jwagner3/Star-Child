@@ -53,8 +53,19 @@ public class Miner : MonoBehaviour
             StartCoroutine("Timer");
 
         }
+        if(collision.gameObject.tag == "Explosion")
+        {
+            StartCoroutine("Timer");
+        }
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Explosion")
+        {
+            DestroyImmediate(gameObject);
+        }
+    }
 
     public IEnumerator Timer()
     {

@@ -23,6 +23,7 @@ public class Explosion : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
     }
 
 
@@ -31,7 +32,7 @@ public class Explosion : MonoBehaviour
        
         for (int i = 1; i < 40; i++)
         {
-            yield return new WaitForSecondsRealtime(.1f);
+            yield return new WaitForSecondsRealtime(.05f);
             gameObject.transform.localScale = new Vector3(i, i, i);
             if (i > 38)
             {

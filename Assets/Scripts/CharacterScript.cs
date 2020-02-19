@@ -15,6 +15,9 @@ public class CharacterScript : MonoBehaviour
     public float curHP;
     private float healthBarlenght;
 
+    public GameObject growingExplosion;
+    public bool explosionTimer = false;
+
     public Scene Level2;
 
     public bool boostUsed = false;
@@ -52,12 +55,10 @@ public class CharacterScript : MonoBehaviour
     {
         CharacterController controller = GetComponent<CharacterController>();
         AdjustcurHealth(0);
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out hit, 1000))
+       
+       
         {
-            transform.LookAt(hit.point);
+            transform.position
 
         }
         if(gameObject)
@@ -95,7 +96,14 @@ public class CharacterScript : MonoBehaviour
             curHP -= 50;
             
         }
-        if(gameObject.FindGameObjectsWithTag()
+        if (!GameObject.FindGameObjectWithTag("Boss One"))
+        {
+            if (Input.GetKeyDown("c") && explosionTimer == false)
+            {
+                StartCoroutine("Explosion");
+                
+            }
+        }
 
     }
 
@@ -164,5 +172,16 @@ public class CharacterScript : MonoBehaviour
         boostUsed = false;
     }
 
+    public IEnumerator Explosion()
+    {
+        yield return new WaitForSeconds(1);
+        Instantiate(growingExplosion, gameObject.transform.position, gameObject.transform.rotation);
+        StartCoroutine("Timer");
+    }
 
+    public IEnumerator Timer()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        explosionTimer = true;
+    }
 }
