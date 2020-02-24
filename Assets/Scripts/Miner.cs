@@ -23,11 +23,13 @@ public class Miner : MonoBehaviour
     void Start()
     {
         minerNoise.Play();
-        deathExplosion.Stop();   
+        deathExplosion.Stop();
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
+        Player = GameObject.FindGameObjectWithTag("Player").transform;
         transform.LookAt(Player);
 
         if (Vector3.Distance(transform.position, Player.position) >= MinDist)
@@ -72,7 +74,7 @@ public class Miner : MonoBehaviour
         deathExplosion.Play();
         
         yield return new WaitForSecondsRealtime(1);
-        DestroyImmediate(gameObject);
+        Destroy(gameObject);
     }
 
 }

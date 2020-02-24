@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1871793669679379134}
   - component: {fileID: 3097485671010751081}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: Death Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4987,9 +4987,10 @@ GameObject:
   - component: {fileID: 8301553000370294789}
   - component: {fileID: 8301553000370294790}
   - component: {fileID: 8301553000370294791}
-  - component: {fileID: -7345102832393739842}
+  - component: {fileID: 56205311000897722}
+  - component: {fileID: 1764811066231441679}
   m_Layer: 0
-  m_Name: Miner
+  m_Name: Miner Shooter
   m_TagString: Miner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5039,7 +5040,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 76502a37a2d497c4b836db40df9a058e, type: 2}
+  - {fileID: 2100000, guid: 1076e65e848630641b44d3747a1c0a27, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5090,7 +5091,25 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-7345102832393739842
+--- !u!114 &56205311000897722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301553000370294792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a319db0bd798d544688fe3c6b92c99f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eProjectile: {fileID: 835861873300758324, guid: 901b7457096921e4ba062915ec8ef4d5,
+    type: 3}
+  eReloadTime: 100
+  player: {fileID: 0}
+  enemySpeed: 3
+  ecounter: 2
+--- !u!54 &1764811066231441679
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5172,11 +5191,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Audio Source
-      objectReference: {fileID: 0}
-    - target: {fileID: 7070625197683563071, guid: 3924bcd1d03fa06499928ace3fa5cc59,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3924bcd1d03fa06499928ace3fa5cc59, type: 3}
