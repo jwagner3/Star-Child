@@ -37,8 +37,8 @@ public class SolarFlareBlast : MonoBehaviour
             if(collision.gameObject.tag == "Miner")
             {
                 
-                Destroy(collision.gameObject);
-            Destroy(gameObject);
+                DestroyImmediate(collision.gameObject);
+            DestroyImmediate(gameObject);
         }
      
            if(collision.gameObject.tag == "Boss")

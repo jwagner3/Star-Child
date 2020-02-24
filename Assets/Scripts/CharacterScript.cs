@@ -36,6 +36,8 @@ public class CharacterScript : MonoBehaviour
     public Material bravoSix;
     public Material bravoSeven;
 
+    public Camera mainCamera;
+
     void OnGUI()
     {
         
@@ -55,13 +57,20 @@ public class CharacterScript : MonoBehaviour
     {
         CharacterController controller = GetComponent<CharacterController>();
         AdjustcurHealth(0);
+        Vector3 input = Input.mousePosition;
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3(input.x, input.y, mainCamera.transform.position.y));
+        transform.LookAt(mousePosition + Vector3.up * transform.position.y);
        
-       
-        {
-            transform.position
+        //RaycastHit hit;
+        //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        }
-        if(gameObject)
+        //if (Physics.Raycast(ray, out hit, 1000))
+        //{
+
+        //    transform.LookAt(hit.point);
+
+        //}
+        if (gameObject)
         Cursor.lockState = CursorLockMode.Confined;
 
 

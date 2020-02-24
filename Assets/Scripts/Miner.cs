@@ -70,10 +70,9 @@ public class Miner : MonoBehaviour
     public IEnumerator Timer()
     {
         deathExplosion.Play();
-        if (deathExplosion.isPlaying == true)
-            Debug.Log("spicy");
+        
         yield return new WaitForSecondsRealtime(1);
-        Destroy(gameObject);
+        DestroyImmediate(gameObject);
     }
 
 }
