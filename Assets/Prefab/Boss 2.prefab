@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 165318592290106913}
   - component: {fileID: 165318592290106926}
   m_Layer: 0
-  m_Name: Sun's Corona
+  m_Name: Sun's Corona  2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 165318592290106927}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 165318592559212549}
   m_RootOrder: 0
@@ -1303,16 +1303,16 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.10679956, g: 0.10965556, b: 0.9056604, a: 0.7607843}
-        key1: {r: 0.031372543, g: 0.7451606, b: 0.90588236, a: 1}
+        key0: {r: 0.9433962, g: 0.21627967, b: 0.057849795, a: 0.7607843}
+        key1: {r: 0.9528302, g: 0.05842829, b: 0.05842829, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0.67058825}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 29684
-        ctime1: 38165
+        ctime0: 0
+        ctime1: 65535
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -4766,10 +4766,10 @@ GameObject:
   - component: {fileID: 165318592559212546}
   - component: {fileID: 165318592559212547}
   - component: {fileID: 165318592559212544}
-  - component: {fileID: 165318592559212548}
   - component: {fileID: -4071602916565723156}
+  - component: {fileID: -6740434361501993517}
   m_Layer: 0
-  m_Name: Boss 1
+  m_Name: Boss 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4784,7 +4784,7 @@ Transform:
   m_GameObject: {fileID: 165318592559212545}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -8.199997, y: 17.200003, z: -4.0999985}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 165318592290106912}
   - {fileID: 165318593288335412}
@@ -4817,7 +4817,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b41e955c4e67dd64bb87f1cbdc73cc95, type: 2}
+  - {fileID: 2100000, guid: 1a3b30af73fd9e3498ab67e2f22af6bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4851,25 +4851,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &165318592559212548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165318592559212545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9d0c533f34bcfb41a60f59141844e01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miner: {fileID: 8301553000370294792, guid: f2a7a0b23c5707c4089ba1869c8cae76, type: 3}
-  player: {fileID: 0}
-  growingExplosion: {fileID: 1923671301606549971, guid: 24cedbbce48cfcd4fa77f6ce95893beb,
-    type: 3}
-  hP: 1000
-  starChunk: {fileID: 1409979270945559859, guid: aa3ee603681f34a4f98b1867430f4e8a,
-    type: 3}
 --- !u!54 &-4071602916565723156
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4886,6 +4867,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-6740434361501993517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165318592559212545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e6b9ed2eb807246b90ece26b5d9463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miner: {fileID: 8301553000370294792, guid: 7bc92a19d9ec68441919ef3ad5914cde, type: 3}
+  player: {fileID: 0}
+  growingBeam: {fileID: 0}
+  hP: 1000
+  starChunk: {fileID: 0}
 --- !u!1 &165318593288335411
 GameObject:
   m_ObjectHideFlags: 0
@@ -4898,7 +4896,7 @@ GameObject:
   - component: {fileID: 165318593288335413}
   - component: {fileID: 165318593288335410}
   m_Layer: 0
-  m_Name: Sun's Surface
+  m_Name: Sun's Surface 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4913,7 +4911,7 @@ Transform:
   m_GameObject: {fileID: 165318593288335411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 165318592559212549}
   m_RootOrder: 1
@@ -6189,9 +6187,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.10196078, g: 0.41413945, b: 0.8666667, a: 0.38039216}
+        key0: {r: 0.9339623, g: 0.611275, b: 0, a: 0.38039216}
         key1: {r: 0.98967814, g: 0.9720414, b: 0.8217044, a: 1}
-        key2: {r: 0.0757942, g: 0.002625496, b: 0.5566038, a: 1}
+        key2: {r: 0.9339623, g: 0.4968817, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0.44705883}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}

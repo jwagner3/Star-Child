@@ -11,6 +11,9 @@ TagManager:
   - Solar Flare
   - Star Chunk 1
   - Boss One
+  - Star Chunk 2
+  - Boss Two
+  - Beam
   layers:
   - Default
   - TransparentFX

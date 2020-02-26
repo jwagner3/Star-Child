@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossOne : MonoBehaviour
+public class BossTwo : MonoBehaviour
 {
 
     public GameObject miner;
     public Transform player;
-    public GameObject growingExplosion;
+    public GameObject growingBeam;
     public float hP = 1000;
-    bool explosionTimer = true;
+    bool beamTimer = true;
     int MoveSpeed = 4;
     int MaxDist = 10;
-    int MinDist = 50;
+    int MinDist = 100;
     int radius = 100;
     float power = 100;
     public GameObject starChunk;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,17 +31,17 @@ public class BossOne : MonoBehaviour
         {
             transform.LookAt(player.position);
             transform.position += transform.forward * MoveSpeed * Time.deltaTime;
-            
+
         }
 
-        if (Vector3.Distance(player.position, gameObject.transform.position) <= MinDist && explosionTimer)
+        if (Vector3.Distance(player.position, gameObject.transform.position) <= MinDist && beamTimer)
         {
-           
 
-            StartCoroutine("Explosion");
-            explosionTimer = false;
+
+            StartCoroutine("Beam");
+            beamTimer = false;
         }
-        if(hP <= 0)
+        if (hP <= 0)
         {
             Instantiate(starChunk, transform.position, transform.rotation);
             Destroy(gameObject);
@@ -50,20 +50,21 @@ public class BossOne : MonoBehaviour
 
 
 
-    public IEnumerator Explosion()
+    public IEnumerator Beam()
     {
 
 
 
-        yield return new WaitForSecondsRealtime(5);
-        Instantiate(growingExplosion, gameObject.transform.position, gameObject.transform.rotation);
+        yield return new WaitForSecondsRealtime(1);
+        gameObject.transform.LookAt(player.transform);
+        Instantiate(growingBeam, gameObject.transform.position, gameObject.transform.rotation);
         StartCoroutine("Timer");
     }
 
     public IEnumerator Timer()
     {
-        yield return new WaitForSecondsRealtime(5);
-        explosionTimer = true;  
+        yield return new WaitForSecondsRealtime(1);
+        beamTimer = true;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -75,6 +76,6 @@ public class BossOne : MonoBehaviour
         }
     }
 }
-    
 
-    
+
+
