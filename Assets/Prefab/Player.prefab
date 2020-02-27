@@ -4963,14 +4963,19 @@ MonoBehaviour:
   rotateSpeed: 1
   maxHP: 1000
   curHP: 0
-  bossOneScript: {fileID: 0}
-  bossOne: {fileID: 165318592559212545, guid: aa80bd05dafb4b44db82d604315d987d, type: 3}
-  boss1HP: 0
+  growingExplosion: {fileID: 1923671301606549971, guid: 24cedbbce48cfcd4fa77f6ce95893beb,
+    type: 3}
+  beam: {fileID: 3573766300121927657, guid: 7a1b21599f52b3942bcf97ee7104e2dd, type: 3}
+  explosionTimer: 0
+  beamTimer: 0
+  Level2:
+    m_Handle: 0
   boostUsed: 0
   launcher: {fileID: 0}
   projectile: {fileID: 835861873300758324, guid: 97f3ca3fc6b80bc4bb9ebc55e056a8a9,
     type: 3}
   projectileR: {fileID: 0}
+  bossOne: {fileID: 165318592559212545, guid: aa80bd05dafb4b44db82d604315d987d, type: 3}
   healthBarTexture: {fileID: 2800000, guid: bc60a3f7d2851b44282454694f1496b9, type: 3}
   healthBar:
     m_Name: 
@@ -5041,6 +5046,9 @@ MonoBehaviour:
     m_StretchHeight: 0
   bravoSix: {fileID: 2100000, guid: 198fdff5432f2974fb4998180cac3023, type: 2}
   bravoSeven: {fileID: 2100000, guid: 818db9fbc103a2740afac4a406458c19, type: 2}
+  mainCamera: {fileID: 0}
+  corona: {fileID: 3492062999028744407}
+  surface: {fileID: 7220991875173134102}
 --- !u!143 &548959197247818167
 CharacterController:
   m_ObjectHideFlags: 0

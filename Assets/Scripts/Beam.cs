@@ -45,9 +45,9 @@ public class Beam : MonoBehaviour
         for (int i = 1; i < 120; i++)
         {
             yield return new WaitForSecondsRealtime(.001f);
-            gameObject.transform.localScale = new Vector3(4, 4, i);
-            corona.transform.localScale = new Vector3(i, i, i);
-            surface.transform.localScale = new Vector3(i, i, i);
+            gameObject.transform.localScale = new Vector3(10, 10, i);
+            //corona.transform.localScale = new Vector3(i, i, i);
+            surface.transform.localScale = new Vector3(3f, i, 3f);
             
             if (i > 118)
             {

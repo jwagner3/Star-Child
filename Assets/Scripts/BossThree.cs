@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossThree : MonoBehaviour
+public class BossTwo : MonoBehaviour
 {
 
     public GameObject miner;
     public Transform player;
     public GameObject growingBeam;
-    public float hP = 3000;
+    public float hP = 2000;
     bool beamTimer = true;
     int MoveSpeed = 4;
     int MaxDist = 10;

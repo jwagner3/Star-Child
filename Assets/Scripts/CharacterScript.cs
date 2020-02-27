@@ -16,7 +16,9 @@ public class CharacterScript : MonoBehaviour
     private float healthBarlenght;
 
     public GameObject growingExplosion;
+    public GameObject beam;
     public bool explosionTimer = false;
+    public bool beamTimer = false;
 
     public Scene Level2;
 
@@ -37,6 +39,9 @@ public class CharacterScript : MonoBehaviour
     public Material bravoSeven;
 
     public Camera mainCamera;
+
+    public ParticleSystem corona;
+    public ParticleSystem surface;
 
     void OnGUI()
     {
@@ -85,7 +90,7 @@ public class CharacterScript : MonoBehaviour
         //speed boost
         if (Input.GetKeyDown(KeyCode.LeftShift) && !boostUsed)
         {
-            speed = 5;
+            speed = 10;
             boostUsed = true;
         }
         if (!boostUsed)
@@ -110,7 +115,26 @@ public class CharacterScript : MonoBehaviour
             if (Input.GetKeyDown("c") && explosionTimer == false)
             {
                 StartCoroutine("Explosion");
-                
+
+            }
+            
+            
+            
+        }
+
+        if (!GameObject.FindGameObjectWithTag("Boss Two"))
+        {
+            if (!GameObject.FindGameObjectWithTag("Boss One"))
+            {
+                gameObject.transform.localScale = new Vector3(6, 6, 6);
+                surface.transform.localScale = new Vector3(6, 6, 6);
+                corona.transform.localScale = new Vector3(6, 6, 6);
+
+                if (Input.GetKeyDown("z") && beamTimer == false)
+                {
+                    StartCoroutine("Beam");
+
+                }
             }
         }
 
@@ -119,7 +143,7 @@ public class CharacterScript : MonoBehaviour
     //miner deals damage on collision
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Miner")
+        if (collision.gameObject.tag == "Miner" && gameObject.GetComponent<Renderer>().material != bravoSix)
         {
             curHP -= 150;
             Destroy(collision.gameObject);
@@ -146,7 +170,7 @@ public class CharacterScript : MonoBehaviour
     //Explosion deals damage on contact
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Explosion")
+        if(other.gameObject.tag == "Explosion" && gameObject.GetComponent<Renderer>().material != bravoSix)
         {
             curHP -= 100;
 
@@ -154,6 +178,16 @@ public class CharacterScript : MonoBehaviour
         if(other.gameObject.tag == "Star Chunk 1")
         {
             SceneManager.LoadScene("Level 2");
+            gameObject.transform.localScale = new Vector3(2, 2, 2);
+            surface.transform.localScale = new Vector3(2, 2, 2);
+            corona.transform.localScale = new Vector3(2, 2, 2);
+        }
+        if (other.gameObject.tag == "Star Chunk 2")
+        {
+            SceneManager.LoadScene("Level 3");
+            gameObject.transform.localScale = new Vector3(4, 4, 4);
+            surface.transform.localScale = new Vector3(4, 4, 4);
+            corona.transform.localScale = new Vector3(4, 4, 4);
         }
     }
 
@@ -183,7 +217,7 @@ public class CharacterScript : MonoBehaviour
 
     public IEnumerator Explosion()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.1f);
         Instantiate(growingExplosion, gameObject.transform.position, gameObject.transform.rotation);
         StartCoroutine("Timer");
     }
@@ -191,6 +225,19 @@ public class CharacterScript : MonoBehaviour
     public IEnumerator Timer()
     {
         yield return new WaitForSecondsRealtime(5);
-        explosionTimer = true;
+        explosionTimer = false;
+    }
+
+    public IEnumerator Beam()
+    {
+        yield return new WaitForSeconds(.1f);
+        Instantiate(beam, gameObject.transform.position, gameObject.transform.rotation);
+        StartCoroutine("BeamTimer");
+    }
+
+    public IEnumerator BeamTimer()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        beamTimer = false;
     }
 }
