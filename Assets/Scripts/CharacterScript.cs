@@ -13,7 +13,7 @@ public class CharacterScript : MonoBehaviour
     public float rotateSpeed = 1;
     public float maxHP = 1000;
     public float curHP;
-    private float healthBarlenght;
+    private float healthBarlength;
 
     public GameObject growingExplosion;
     public GameObject beam;
@@ -33,7 +33,7 @@ public class CharacterScript : MonoBehaviour
     
     private Quaternion moveRotation;
     public Texture2D healthBarTexture;
-    public GUIStyle healthBar;
+    public GUIStyle healthBarStyle;
      Renderer darkMode;
     public Material bravoSix;
     public Material bravoSeven;
@@ -42,12 +42,13 @@ public class CharacterScript : MonoBehaviour
 
     public ParticleSystem corona;
     public ParticleSystem surface;
+    
 
     void OnGUI()
     {
         
-        healthBar.onNormal.background = healthBarTexture;
-        GUI.Box(new Rect(260, 60, healthBarlenght, 20), curHP + "/" + maxHP, healthBar);
+        healthBarStyle.onNormal.background = healthBarTexture;
+        GUI.Box(new Rect(260, 60, healthBarlength, 20), curHP + "/" + maxHP, healthBarStyle);
        
     }
 
@@ -56,10 +57,15 @@ public class CharacterScript : MonoBehaviour
         DontDestroyOnLoad(gameObject);
        darkMode = gameObject.GetComponent<Renderer>();
         curHP = maxHP;
-        healthBarlenght = Screen.width / 2;
+        healthBarlength = Screen.width / 2;
     }
     void Update()
     {
+
+        if(curHP <= 0)
+        {
+            //SceneManager.LoadScene("defeat");
+        }
         CharacterController controller = GetComponent<CharacterController>();
         AdjustcurHealth(0);
         //Vector3 input = Input.mousePosition;
@@ -126,9 +132,7 @@ public class CharacterScript : MonoBehaviour
         {
             if (!GameObject.FindGameObjectWithTag("Boss One"))
             {
-                gameObject.transform.localScale = new Vector3(6, 6, 6);
-                surface.transform.localScale = new Vector3(6, 6, 6);
-                corona.transform.localScale = new Vector3(6, 6, 6);
+               
 
                 if (Input.GetKeyDown("z") && beamTimer == false)
                 {
@@ -163,7 +167,7 @@ public class CharacterScript : MonoBehaviour
             curHP = maxHP;
         if (maxHP < 1)
             maxHP = 1;
-        healthBarlenght = (Screen.width / 2) * (curHP / maxHP);
+        healthBarlength = (Screen.width / 2) * (curHP / maxHP);
     }
 
 
@@ -175,12 +179,20 @@ public class CharacterScript : MonoBehaviour
             curHP -= 100;
 
         }
-        if(other.gameObject.tag == "Star Chunk 1")
+        if (other.gameObject.tag == "Beam" && gameObject.GetComponent<Renderer>().material != bravoSix)
+        {
+            curHP -= 200;
+
+        }
+        if (other.gameObject.tag == "Star Chunk 1")
         {
             SceneManager.LoadScene("Level 2");
             gameObject.transform.localScale = new Vector3(2, 2, 2);
             surface.transform.localScale = new Vector3(2, 2, 2);
             corona.transform.localScale = new Vector3(2, 2, 2);
+            maxHP = 2000;
+            curHP = maxHP;
+            OnGUI();
         }
         if (other.gameObject.tag == "Star Chunk 2")
         {
@@ -188,6 +200,9 @@ public class CharacterScript : MonoBehaviour
             gameObject.transform.localScale = new Vector3(4, 4, 4);
             surface.transform.localScale = new Vector3(4, 4, 4);
             corona.transform.localScale = new Vector3(4, 4, 4);
+            maxHP = 3000;
+            curHP = maxHP;
+            OnGUI();
         }
     }
 

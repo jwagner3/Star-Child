@@ -4767,7 +4767,7 @@ GameObject:
   - component: {fileID: 165318592559212547}
   - component: {fileID: 165318592559212544}
   - component: {fileID: -4071602916565723156}
-  - component: {fileID: 2575779581663105947}
+  - component: {fileID: 4256166361119924859}
   m_Layer: 0
   m_Name: Boss 3
   m_TagString: Untagged
@@ -4867,7 +4867,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2575779581663105947
+--- !u!114 &4256166361119924859
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4876,7 +4876,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 165318592559212545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee419e6716b6a24cb1827295b418d87, type: 3}
+  m_Script: {fileID: 11500000, guid: 15e6b9ed2eb807246b90ece26b5d9463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   miner: {fileID: 8301553000370294792, guid: 80edffb15301b8a4a8d0508716897aea, type: 3}
@@ -4885,6 +4885,8 @@ MonoBehaviour:
     type: 3}
   hP: 3000
   starChunk: {fileID: 0}
+  surface: {fileID: 165318593288335413}
+  corona: {fileID: 165318592290106913}
 --- !u!1 &165318593288335411
 GameObject:
   m_ObjectHideFlags: 0

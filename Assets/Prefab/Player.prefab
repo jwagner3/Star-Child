@@ -4862,7 +4862,7 @@ GameObject:
   - component: {fileID: 548959197247818167}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4963,7 +4963,7 @@ MonoBehaviour:
   rotateSpeed: 1
   maxHP: 1000
   curHP: 0
-  growingExplosion: {fileID: 1923671301606549971, guid: 24cedbbce48cfcd4fa77f6ce95893beb,
+  growingExplosion: {fileID: 1923671301606549971, guid: 8420c511de7eafe48b6f0d4f4c452595,
     type: 3}
   beam: {fileID: 3573766300121927657, guid: 7a1b21599f52b3942bcf97ee7104e2dd, type: 3}
   explosionTimer: 0
@@ -4977,7 +4977,7 @@ MonoBehaviour:
   projectileR: {fileID: 0}
   bossOne: {fileID: 165318592559212545, guid: aa80bd05dafb4b44db82d604315d987d, type: 3}
   healthBarTexture: {fileID: 2800000, guid: bc60a3f7d2851b44282454694f1496b9, type: 3}
-  healthBar:
+  healthBarStyle:
     m_Name: 
     m_Normal:
       m_Background: {fileID: 0}

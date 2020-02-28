@@ -7,8 +7,7 @@ public class Explosion : MonoBehaviour
     public Vector3 scale;
     public ParticleSystem corona;
     public ParticleSystem surface;
-    public ParticleSystem coronaR;
-    public ParticleSystem surfaceR;
+   
     
 
     void Awake()
@@ -41,7 +40,7 @@ public class Explosion : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(.05f);
             gameObject.transform.localScale = new Vector3(i, i, i);
-            corona.transform.localScale = new Vector3(i, i , i);
+            
             surface.transform.localScale = new Vector3(i , i, i);
             
             

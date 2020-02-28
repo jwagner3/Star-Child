@@ -4864,6 +4864,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 548959197247818166, guid: 96f44d24bee7b5c45be8c3559e2f6977, type: 3}
   scale: {x: 0, y: 0, z: 0}
+  corona: {fileID: 3705426532239655112}
+  surface: {fileID: 7115409680887408778}
+  coronaR: {fileID: 0}
+  surfaceR: {fileID: 0}
 --- !u!1 &4092555120366956625
 GameObject:
   m_ObjectHideFlags: 0

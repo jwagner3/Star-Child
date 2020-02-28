@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossThree : MonoBehaviour
+public class BossTwo : MonoBehaviour
 {
 
     public GameObject miner;
     public Transform player;
     public GameObject growingBeam;
-    public float hP = 3000;
+    public float hP = 2000;
     bool beamTimer = true;
     int MoveSpeed = 4;
     int MaxDist = 10;
@@ -16,6 +16,7 @@ public class BossThree : MonoBehaviour
     int radius = 100;
     float power = 100;
     public GameObject starChunk;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class BossThree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (!GameObject.FindGameObjectWithTag("Miner"))
         {
@@ -75,6 +77,8 @@ public class BossThree : MonoBehaviour
             hP -= 100;
         }
     }
+
+    
 }
 
 
