@@ -16,7 +16,15 @@ public class SolarFlareBlast : MonoBehaviour
     void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        transform.Rotate(0, 90, 0);
+        if(gameObject.tag == "Bullet")
+        {
+
+        }
+        else
+        {
+            transform.Rotate(0, 90, 0);
+        }
+        
        
     }
 

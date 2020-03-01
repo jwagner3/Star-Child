@@ -61,10 +61,12 @@ public class CharacterScript : MonoBehaviour
     }
     void Update()
     {
-
-        if(curHP <= 0)
+        gameObject.transform.localScale = new Vector3(curHP / 500, curHP / 500, curHP / 500);
+        corona.transform.localScale = new Vector3(curHP / 500, curHP / 500, curHP / 500);
+        surface.transform.localScale = new Vector3(curHP / 500, curHP / 500, curHP / 500);
+        if (curHP <= 0)
         {
-            //SceneManager.LoadScene("defeat");
+            //SceneManager.LoadScene("Defeat");
         }
         CharacterController controller = GetComponent<CharacterController>();
         AdjustcurHealth(0);
@@ -113,7 +115,7 @@ public class CharacterScript : MonoBehaviour
         if (Input.GetKeyDown("r"))
         {
             Shoot(speed);
-            curHP -= 50;
+            curHP -= 25;
             
         }
         if (!GameObject.FindGameObjectWithTag("Boss One"))
@@ -147,7 +149,7 @@ public class CharacterScript : MonoBehaviour
     //miner deals damage on collision
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Miner" && gameObject.GetComponent<Renderer>().material != bravoSix)
+        if (collision.gameObject.tag == "Miner" && !boostUsed)
         {
             curHP -= 150;
             Destroy(collision.gameObject);
@@ -174,32 +176,37 @@ public class CharacterScript : MonoBehaviour
     //Explosion deals damage on contact
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Explosion" && gameObject.GetComponent<Renderer>().material != bravoSix)
+        if(other.gameObject.tag == "Explosion" && !boostUsed)
         {
             curHP -= 100;
 
         }
-        if (other.gameObject.tag == "Beam" && gameObject.GetComponent<Renderer>().material != bravoSix)
+        if (other.gameObject.tag == "Bullet" && !boostUsed)
+        {
+            curHP -= 25;
+
+        }
+        if (other.gameObject.tag == "Beam" && !boostUsed)
         {
             curHP -= 200;
 
         }
         if (other.gameObject.tag == "Star Chunk 1")
         {
-            SceneManager.LoadScene("Level 2");
-            gameObject.transform.localScale = new Vector3(2, 2, 2);
-            surface.transform.localScale = new Vector3(2, 2, 2);
-            corona.transform.localScale = new Vector3(2, 2, 2);
+            SceneManager.LoadScene("Load Screen 2");
+            //gameObject.transform.localScale = new Vector3(2, 2, 2);
+            //surface.transform.localScale = new Vector3(2, 2, 2);
+            //corona.transform.localScale = new Vector3(2, 2, 2);
             maxHP = 2000;
             curHP = maxHP;
             OnGUI();
         }
         if (other.gameObject.tag == "Star Chunk 2")
         {
-            SceneManager.LoadScene("Level 3");
-            gameObject.transform.localScale = new Vector3(4, 4, 4);
-            surface.transform.localScale = new Vector3(4, 4, 4);
-            corona.transform.localScale = new Vector3(4, 4, 4);
+            SceneManager.LoadScene("Load Screen 3");
+            //gameObject.transform.localScale = new Vector3(4, 4, 4);
+            //surface.transform.localScale = new Vector3(4, 4, 4);
+            //corona.transform.localScale = new Vector3(4, 4, 4);
             maxHP = 3000;
             curHP = maxHP;
             OnGUI();

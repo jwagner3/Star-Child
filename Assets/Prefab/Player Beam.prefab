@@ -9522,8 +9522,8 @@ GameObject:
   - component: {fileID: 7659270961888900227}
   - component: {fileID: -7857138526292017525}
   m_Layer: 0
-  m_Name: Cube (1)
-  m_TagString: Untagged
+  m_Name: Player Beam
+  m_TagString: Player Beam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

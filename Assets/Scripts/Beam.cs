@@ -42,14 +42,14 @@ public class Beam : MonoBehaviour
     public IEnumerator Growth()
     {
        
-        for (int i = 1; i < 120; i++)
+        for (int i = 1; i < 160; i++)
         {
             yield return new WaitForSecondsRealtime(.001f);
             gameObject.transform.localScale = new Vector3(10, 10, i);
             //corona.transform.localScale = new Vector3(i, i, i);
             surface.transform.localScale = new Vector3(3f, i, 3f);
             
-            if (i > 118)
+            if (i > 150)
             {
                              
                 Destroy(gameObject);

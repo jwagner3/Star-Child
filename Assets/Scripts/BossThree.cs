@@ -8,12 +8,14 @@ public class BossThree : MonoBehaviour
     public GameObject miner;
     public Transform player;
     public GameObject growingBeam;
+    public GameObject growingExplosion;
     public float hP = 3000;
     bool beamTimer = true;
     bool growthTimer = true;
+    bool explosionTimer = true;
     int MoveSpeed = 4;
     int MaxDist = 10;
-    int MinDist = 100;
+    int MinDist = 500;
     int radius = 100;
     float power = 100;
     public GameObject starChunk;
@@ -28,8 +30,16 @@ public class BossThree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(growthTimer)
-        StartCoroutine("Supernova");
+        if (Vector3.Distance(player.position, gameObject.transform.position) <= MinDist && explosionTimer)
+        {
+
+
+            StartCoroutine("Explosion");
+            explosionTimer = false;
+        }
+
+        //if (growthTimer)
+        //StartCoroutine("Supernova");
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (!GameObject.FindGameObjectWithTag("Miner"))
@@ -65,7 +75,21 @@ public class BossThree : MonoBehaviour
         Instantiate(growingBeam, gameObject.transform.position, gameObject.transform.rotation);
         StartCoroutine("Timer");
     }
+    public IEnumerator Explosion()
+    {
 
+
+
+        yield return new WaitForSecondsRealtime(5);
+        Instantiate(growingExplosion, gameObject.transform.position, gameObject.transform.rotation);
+        StartCoroutine("Timer");
+    }
+
+    public IEnumerator ExplosionTimer()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        explosionTimer = true;
+    }
     public IEnumerator Timer()
     {
         yield return new WaitForSecondsRealtime(1);
@@ -82,8 +106,12 @@ public class BossThree : MonoBehaviour
     {
         if (other.gameObject.tag == "Solar Flare")
         {
-            Debug.Log("hit");
+            
             hP -= 100;
+        }
+        else if(other.gameObject.tag == "Player Beam")
+        {
+            hP -= 300;
         }
     }
 

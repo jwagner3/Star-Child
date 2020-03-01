@@ -20,7 +20,7 @@ public class ShooterEnemy : MonoBehaviour
     GameObject enemy;
     float timer;
     bool frozen = false;
-
+    public ParticleSystem deathExplosion;
 
     public float ecounter;
 
@@ -49,25 +49,14 @@ public class ShooterEnemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         enemyDist = Vector3.Distance(transform.position, player.transform.position);
-        if (frozen != true)
-        {
-            checkDistance();
-            if (enemyDist <= minDist)
-            {
-                transform.LookAt(player.transform);
-                transform.position += transform.forward * enemySpeed * Time.deltaTime;
-                print(enemyDist);
+        checkDistance();
+        transform.LookAt(player.transform);
+        transform.position += transform.forward * enemySpeed * Time.deltaTime;
+        print(enemyDist);
 
 
 
-            }
-            else
-            {
-
-            }
-
-
-            eCheckReload();
+        eCheckReload();
             if (eReady == true && enemyDist <= minDist)
             {
                 eReady = false;
@@ -79,14 +68,8 @@ public class ShooterEnemy : MonoBehaviour
                 eReloadTimed += (.8 + eRandomNum);
 
             }
-        }
-        else
-        {
-            if (Time.time > timer + 5)
-            {
-                frozen = false;
-            }
-        }
+        
+        
         Destroy(eProjectile, 1);
     }
 
@@ -113,13 +96,37 @@ public class ShooterEnemy : MonoBehaviour
     {
         float enemyDist = Vector3.Distance(transform.position, player.transform.position);
     }
-    public void Freeze()
+    public void OnTriggerEnter(Collider collision)
     {
-        frozen = true;
-        timer = Time.time;
+        if (collision.gameObject.tag == "Solar Flare")
+        {
+
+            StartCoroutine("Timer");
+
+        }
+        if (collision.gameObject.tag == "Explosion")
+        {
+            StartCoroutine("Timer");
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Explosion")
+        {
+            DestroyImmediate(gameObject);
+        }
+    }
+
+    public IEnumerator Timer()
+    {
+        deathExplosion.Play();
+
+        yield return new WaitForSecondsRealtime(1);
+        Destroy(gameObject);
     }
 
 
-   
+
 }
 

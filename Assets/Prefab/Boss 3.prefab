@@ -4883,8 +4883,11 @@ MonoBehaviour:
   player: {fileID: 0}
   growingBeam: {fileID: 3573766300121927657, guid: 7a1b21599f52b3942bcf97ee7104e2dd,
     type: 3}
+  growingExplosion: {fileID: 1923671301606549971, guid: 878bb925be48c2d4fb035479d358aea3,
+    type: 3}
   hP: 3000
-  starChunk: {fileID: 0}
+  starChunk: {fileID: 1409979270945559859, guid: 25eab7fd1e7c28344a3a5d96a47b9b2a,
+    type: 3}
   surface: {fileID: 165318593288335413}
   corona: {fileID: 165318592290106913}
 --- !u!1 &165318593288335411
