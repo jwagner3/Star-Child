@@ -57,4 +57,10 @@ public class SolarFlareBlast : MonoBehaviour
             Destroy(gameObject);
 
     }
+
+    public IEnumerator Timer()
+    {
+        yield return new WaitForSecondsRealtime(5);
+        gameObject.SetActive(false);
+    }
 }

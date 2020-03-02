@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class CameraScript2 : MonoBehaviour
@@ -9,11 +10,10 @@ public class CameraScript2 : MonoBehaviour
     public float distance = 12.0f;                          // Default Distance
     public float offsetFromWall = 0.1f;                     // Bring camera away from any colliding objects
     public float maxDistance = 20;                      // Maximum zoom Distance
-    public float minDistance = 0.6f;                        // Minimum zoom Distance
+    public float minDistance = 20f;                        // Minimum zoom Distance
     public float xSpeed = 200.0f;                           // Orbit speed (Left/Right)
     public float ySpeed = 200.0f;                           // Orbit speed (Up/Down)
-    public float yMinLimit = -80;                           // Looking up limit
-    public float yMaxLimit = 80;                            // Looking down limit
+   
     public float zoomRate = 40;                             // Zoom Speed
     public float rotationDampening = 3.0f;              // Auto Rotation speed (higher = faster)
     public float zoomDampening = 5.0f;                  // Auto Zoom speed (Higher = faster)
@@ -25,7 +25,7 @@ public class CameraScript2 : MonoBehaviour
 
     private float xDeg = 0.0f;
     private float yDeg = 0.0f;
-    private float currentDistance;
+    public float currentDistance;
     public float desiredDistance;
     private float correctedDistance;
     private bool rotateBehind;
@@ -53,28 +53,36 @@ public class CameraScript2 : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        if(SceneManager.GetActiveScene().name == "Level 2")
         {
-
-            if (inFirstPerson == true)
-            {
-
-                minDistance = 10;
-                desiredDistance = 15;
-                userModel.SetActive(true);
-                inFirstPerson = false;
-            }
-        }
-
-        if (desiredDistance == 10)
+            maxDistance = 25;
+            minDistance = 25;
+        }else if(SceneManager.GetActiveScene().name == "Level 3")
         {
-
-            minDistance = 0;
-            desiredDistance = 0;
-            userModel.SetActive(false);
-            inFirstPerson = true;
+            maxDistance = 30;
+            minDistance = 30;
         }
+        //if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        //{
+
+        //    if (inFirstPerson == true)
+        //    {
+
+        //        minDistance = 10;
+        //        desiredDistance = 15;
+        //        userModel.SetActive(true);
+        //        inFirstPerson = false;
+        //    }
+        //}
+
+        //if (desiredDistance == 10)
+        //{
+
+        //    minDistance = 0;
+        //    desiredDistance = 0;
+        //    userModel.SetActive(false);
+        //    inFirstPerson = true;
+        //}
     }
 
     //Only Move camera after everything else has been updated
@@ -107,7 +115,7 @@ public class CameraScript2 : MonoBehaviour
                 }
             }
         }
-        ClampAngle(yDeg);
+        //ClampAngle(yDeg);
 
         // Set camera rotation
         Quaternion rotation = Quaternion.Euler(yDeg, xDeg, 0);

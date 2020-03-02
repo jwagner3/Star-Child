@@ -92,18 +92,19 @@ MonoBehaviour:
   targetHeight: 1.7
   distance: 12
   offsetFromWall: 0.1
-  maxDistance: 20
-  minDistance: 0.6
+  maxDistance: 30
+  minDistance: 10
   xSpeed: 200
   ySpeed: 200
-  yMinLimit: -80
-  yMaxLimit: 80
+  yMinLimit: -120
+  yMaxLimit: 120
   zoomRate: 40
   rotationDampening: 3
   zoomDampening: 5
   lockToRearOfTarget: 0
   allowMouseInputX: 1
   allowMouseInputY: 1
+  currentDistance: 0
   desiredDistance: 0
   userModel: {fileID: 0}
   inFirstPerson: 0

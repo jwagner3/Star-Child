@@ -8,13 +8,17 @@ public class SceneChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(SceneManager.GetActiveScene().name != "Title" && SceneManager.GetActiveScene().name != "Instructions")
         StartCoroutine("LoadScreen");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(GameObject.FindGameObjectWithTag("Scene Loader") != gameObject)
+        {
+
+        }
     }
 
     public void Instructions()

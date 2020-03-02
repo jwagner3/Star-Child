@@ -1303,7 +1303,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.10196078, g: 0.41413945, b: 0.8666667, a: 0.38039216}
+        key0: {r: 0.21016338, g: 0.10196078, b: 0.8666667, a: 0.38039216}
         key1: {r: 0.98967814, g: 0.9720414, b: 0.8217044, a: 1}
         key2: {r: 0.0757942, g: 0.002625496, b: 0.5566038, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0.44705883}
@@ -4866,8 +4866,6 @@ MonoBehaviour:
   scale: {x: 0, y: 0, z: 0}
   corona: {fileID: 3705426532239655112}
   surface: {fileID: 7115409680887408778}
-  coronaR: {fileID: 0}
-  surfaceR: {fileID: 0}
 --- !u!1 &4092555120366956625
 GameObject:
   m_ObjectHideFlags: 0
@@ -6171,8 +6169,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.10679956, g: 0.10965556, b: 0.9056604, a: 0.7607843}
-        key1: {r: 0.031372543, g: 0.7451606, b: 0.90588236, a: 1}
+        key0: {r: 0.47745064, g: 0.10588234, b: 0.90588236, a: 0.7607843}
+        key1: {r: 0.040231682, g: 0.031372543, b: 0.90588236, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0.67058825}
         key4: {r: 0, g: 0, b: 0, a: 0}

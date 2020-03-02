@@ -4975,6 +4975,7 @@ MonoBehaviour:
   projectile: {fileID: 835861873300758324, guid: 97f3ca3fc6b80bc4bb9ebc55e056a8a9,
     type: 3}
   projectileR: {fileID: 0}
+  reloaded: 1
   bossOne: {fileID: 165318592559212545, guid: aa80bd05dafb4b44db82d604315d987d, type: 3}
   healthBarTexture: {fileID: 2800000, guid: bc60a3f7d2851b44282454694f1496b9, type: 3}
   healthBarStyle:
@@ -5092,8 +5093,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 548959197960183889}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.29, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0.966}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_Children: []
   m_Father: {fileID: 548959197247818188}
   m_RootOrder: 0
@@ -5108,7 +5109,7 @@ TrailRenderer:
   m_GameObject: {fileID: 548959197960183889}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
@@ -5147,7 +5148,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.317461
+        value: 0.6984081
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -5176,8 +5177,8 @@ TrailRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 65535
-      atime2: 0
+      atime1: 54548
+      atime2: 65535
       atime3: 0
       atime4: 0
       atime5: 0
@@ -5185,13 +5186,13 @@ TrailRenderer:
       atime7: 0
       m_Mode: 0
       m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
+      m_NumAlphaKeys: 3
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
-    generateLightingData: 0
+    generateLightingData: 1
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
@@ -6498,8 +6499,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.048460312, g: 0.13580091, b: 0.9339623, a: 0.7607843}
-        key1: {r: 0.004405493, g: 0.5788499, b: 0.9339623, a: 1}
+        key0: {r: 0.32940364, g: 0.04705882, b: 0.93333334, a: 0.7607843}
+        key1: {r: 0.009667788, g: 0.0039215405, b: 0.93333334, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0.67058825}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -11252,17 +11253,17 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.07214406, g: 0, b: 0.93333334, a: 0.38039216}
+        key0: {r: 0.52484715, g: 0.06274474, b: 0.8867924, a: 0.38039216}
         key1: {r: 0.98967814, g: 0.9720414, b: 0.8217044, a: 1}
-        key2: {r: 0.051486313, g: 0.10100302, b: 0.8396226, a: 1}
+        key2: {r: 0.07214406, g: 0, b: 0.93333334, a: 1}
         key3: {r: 0, g: 0, b: 0, a: 0.44705883}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 29491
+        ctime0: 30069
         ctime1: 30262
-        ctime2: 31418
+        ctime2: 31997
         ctime3: 0
         ctime4: 0
         ctime5: 0

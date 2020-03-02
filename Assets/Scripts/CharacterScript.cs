@@ -13,7 +13,7 @@ public class CharacterScript : MonoBehaviour
     public float rotateSpeed = 1;
     public float maxHP = 1000;
     public float curHP;
-    private float healthBarlength;
+    
 
     public GameObject growingExplosion;
     public GameObject beam;
@@ -27,6 +27,7 @@ public class CharacterScript : MonoBehaviour
     public Transform launcher;
     public GameObject projectile;
     public Rigidbody projectileR;
+    public bool reloaded = true;
     public GameObject bossOne;
 
     private Vector3 moveDirection = Vector3.zero;
@@ -34,7 +35,8 @@ public class CharacterScript : MonoBehaviour
     private Quaternion moveRotation;
     public Texture2D healthBarTexture;
     public GUIStyle healthBarStyle;
-     Renderer darkMode;
+    private float healthBarlength;
+    Renderer darkMode;
     public Material bravoSix;
     public Material bravoSeven;
 
@@ -112,10 +114,12 @@ public class CharacterScript : MonoBehaviour
             DynamicGI.UpdateEnvironment();
             StartCoroutine("BoostCooldown");
         }
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKeyDown("r") && reloaded)
         {
             Shoot(speed);
-            curHP -= 25;
+            curHP -= 50;
+            reloaded = false;
+            StartCoroutine("Reload");
             
         }
         if (!GameObject.FindGameObjectWithTag("Boss One"))
@@ -241,6 +245,7 @@ public class CharacterScript : MonoBehaviour
     {
         yield return new WaitForSeconds(.1f);
         Instantiate(growingExplosion, gameObject.transform.position, gameObject.transform.rotation);
+        curHP -= 100;
         StartCoroutine("Timer");
     }
 
@@ -254,6 +259,7 @@ public class CharacterScript : MonoBehaviour
     {
         yield return new WaitForSeconds(.1f);
         Instantiate(beam, gameObject.transform.position, gameObject.transform.rotation);
+        curHP -= 100;
         StartCoroutine("BeamTimer");
     }
 
@@ -261,5 +267,11 @@ public class CharacterScript : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(5);
         beamTimer = false;
+    }
+
+    public IEnumerator Reload()
+    {
+        yield return new WaitForSecondsRealtime(.5f);
+        reloaded = true;
     }
 }

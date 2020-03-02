@@ -8,6 +8,7 @@ public class BossTwo : MonoBehaviour
     public GameObject miner;
     public Transform player;
     public GameObject growingBeam;
+    public float maxHP = 2000;
     public float hP = 2000;
     bool beamTimer = true;
     int MoveSpeed = 4;
@@ -16,12 +17,27 @@ public class BossTwo : MonoBehaviour
     int radius = 100;
     float power = 100;
     public GameObject starChunk;
-   
 
+    public GUIStyle bossBarStyle;
+    public Texture2D bossBarTexture;
+    private float bossBarLength;
+    public GUIStyle bossNameStyle;
+    public Font bossNameFont;
+
+    public void OnGUI()
+    {
+        bossBarStyle.onNormal.background = bossBarTexture;
+        bossBarStyle.normal.textColor = Color.white;
+        bossNameStyle.normal.textColor = Color.white;
+        bossNameStyle.font = bossNameFont;
+        GUI.Box(new Rect(260, 800, bossBarLength, 30), "Solaire, Celestial of War", bossNameStyle);
+        GUI.Box(new Rect(260, 850, bossBarLength, 20), hP + "/" + maxHP, bossBarStyle);
+    }
     // Start is called before the first frame update
     void Start()
     {
-
+        hP = maxHP;
+        bossBarLength = Screen.width / 2;
     }
 
     // Update is called once per frame
@@ -78,7 +94,19 @@ public class BossTwo : MonoBehaviour
         }
     }
 
-    
+    public void AdjustcurHealth(float adj)
+    {
+
+        hP += adj;
+        if (hP < 0)
+            hP = 0;
+        if (hP > maxHP)
+            hP = maxHP;
+        if (maxHP < 1)
+            maxHP = 1;
+        bossBarLength = (Screen.width / 2) * (hP / maxHP);
+    }
+
 }
 
 

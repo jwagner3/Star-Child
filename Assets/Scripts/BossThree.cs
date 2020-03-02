@@ -9,24 +9,43 @@ public class BossThree : MonoBehaviour
     public Transform player;
     public GameObject growingBeam;
     public GameObject growingExplosion;
+    public float maxHP = 3000;
     public float hP = 3000;
     bool beamTimer = true;
     bool growthTimer = true;
     bool explosionTimer = true;
     int MoveSpeed = 4;
     int MaxDist = 10;
-    int MinDist = 500;
+    int MinDist = 100;
     int radius = 100;
     float power = 100;
     public GameObject starChunk;
     public ParticleSystem surface;
     public ParticleSystem corona;
-    // Start is called before the first frame update
+    public GUIStyle bossBarStyle;
+    public Texture2D bossBarTexture;
+    private float bossBarLength;
+    public GUIStyle bossNameStyle;
+    public Font bossNameFont;
+    public GUIStyle bossTimerStyle;
+    public float superNovaHP = 3000;
+
+    public void OnGUI()
+    {
+        bossBarStyle.onNormal.background = bossBarTexture;
+        bossBarStyle.normal.textColor = Color.white;
+        bossNameStyle.normal.textColor = Color.white;
+        bossNameStyle.font = bossNameFont;
+        GUI.Box(new Rect(260, 800, bossBarLength, 30), "Recitritus, Corpse of Worlds", bossNameStyle);
+        GUI.Box(new Rect(260, 850, bossBarLength, 20), hP + "/" + maxHP, bossBarStyle);
+        GUI.Box(new Rect(260, 900, Screen.width / 2, 20), "Time Until Supernova", bossTimerStyle);
+    }
     void Start()
     {
-
+        hP = maxHP;
+        bossBarLength = Screen.width / 2;
+        StartCoroutine("Supernova");
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -38,8 +57,8 @@ public class BossThree : MonoBehaviour
             explosionTimer = false;
         }
 
-        //if (growthTimer)
-        //StartCoroutine("Supernova");
+        
+        
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (!GameObject.FindGameObjectWithTag("Miner"))
@@ -126,6 +145,20 @@ public class BossThree : MonoBehaviour
             StartCoroutine("GrowthTimer");
         }
     }
+
+    public void AdjustcurHealth(float adj)
+    {
+
+        hP += adj;
+        if (hP < 0)
+            hP = 0;
+        if (hP > maxHP)
+            hP = maxHP;
+        if (maxHP < 1)
+            maxHP = 1;
+        bossBarLength = (Screen.width / 2) * (hP / maxHP);
+    }
+   
 }
 
 
