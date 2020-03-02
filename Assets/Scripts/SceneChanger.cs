@@ -15,10 +15,7 @@ public class SceneChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameObject.FindGameObjectWithTag("Scene Loader") != gameObject)
-        {
-
-        }
+        
     }
 
     public void Instructions()
