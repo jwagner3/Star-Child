@@ -16,7 +16,7 @@ public class BossThree : MonoBehaviour
     bool explosionTimer = true;
     int MoveSpeed = 4;
     int MaxDist = 10;
-    int MinDist = 100;
+    int MinDist = 300;
     int radius = 100;
     float power = 100;
     public GameObject starChunk;
@@ -49,6 +49,7 @@ public class BossThree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         if (Vector3.Distance(player.position, gameObject.transform.position) <= MinDist && explosionTimer)
         {
 
@@ -60,7 +61,7 @@ public class BossThree : MonoBehaviour
         
         
 
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        
         if (!GameObject.FindGameObjectWithTag("Miner"))
         {
             transform.LookAt(player.position);
