@@ -4965,7 +4965,7 @@ MonoBehaviour:
   curHP: 0
   growingExplosion: {fileID: 1923671301606549971, guid: 8420c511de7eafe48b6f0d4f4c452595,
     type: 3}
-  beam: {fileID: 3573766300121927657, guid: 7a1b21599f52b3942bcf97ee7104e2dd, type: 3}
+  beam: {fileID: 3573766300121927657, guid: 50fee5ad98deba2409069289a0c8ca27, type: 3}
   explosionTimer: 0
   beamTimer: 0
   Level2:

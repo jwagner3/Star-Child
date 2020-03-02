@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class BossThree : MonoBehaviour
@@ -28,7 +29,9 @@ public class BossThree : MonoBehaviour
     public GUIStyle bossNameStyle;
     public Font bossNameFont;
     public GUIStyle bossTimerStyle;
-    public float superNovaHP = 3000;
+    public float superNovaHP = 6000;
+    public ParticleSystem supernova;
+    public bool supernovaActive = true;
 
     public void OnGUI()
     {
@@ -36,19 +39,23 @@ public class BossThree : MonoBehaviour
         bossBarStyle.normal.textColor = Color.white;
         bossNameStyle.normal.textColor = Color.white;
         bossNameStyle.font = bossNameFont;
-        GUI.Box(new Rect(260, 800, bossBarLength, 30), "Recitritus, Corpse of Worlds", bossNameStyle);
-        GUI.Box(new Rect(260, 850, bossBarLength, 20), hP + "/" + maxHP, bossBarStyle);
-        GUI.Box(new Rect(260, 900, Screen.width / 2, 20), "Time Until Supernova", bossTimerStyle);
+        GUI.Box(new Rect(260, 900, bossBarLength, 30), "Recitritus, Corpse of Worlds", bossNameStyle);
+        GUI.Box(new Rect(260, 950, bossBarLength, 20), hP + "/" + maxHP, bossBarStyle);
+        GUI.Box(new Rect(260, 1000, Screen.width / 2, 20), "Time Until Supernova");
+        GUI.Box(new Rect(260, 1050, superNovaHP / 2, 20), superNovaHP+"", bossTimerStyle);
     }
     void Start()
     {
+        
         hP = maxHP;
         bossBarLength = Screen.width / 2;
-        StartCoroutine("Supernova");
+        
     }
     // Update is called once per frame
     void Update()
     {
+        StartCoroutine("SupernoveTimer");
+        AdjustcurHealth(0);
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (Vector3.Distance(player.position, gameObject.transform.position) <= MinDist && explosionTimer)
         {
@@ -81,6 +88,14 @@ public class BossThree : MonoBehaviour
             Instantiate(starChunk, transform.position, transform.rotation);
             Destroy(gameObject);
         }
+        
+        if(superNovaHP <= 0 && supernovaActive)
+        {
+            supernova.Play();
+            StartCoroutine("Supernova");
+            supernovaActive = false;
+        }
+        
     }
 
 
@@ -139,11 +154,13 @@ public class BossThree : MonoBehaviour
     {
         for (int i = 1; i < 100; i++)
         {
-            yield return new WaitForSecondsRealtime(1f);
-            gameObject.transform.localScale = new Vector3(i / 2, i / 2, i / 2);
-            surface.transform.localScale = new Vector3(i / 2, i / 2, i / 2);
-            corona.transform.localScale = new Vector3(i / 2, i / 2, i / 2);
-            StartCoroutine("GrowthTimer");
+            yield return new WaitForSecondsRealtime(.1f);
+            supernova.transform.localScale = new Vector3(i+1, i+1, i+1);
+            //gameObject.transform.localScale = new Vector3(i / 2, i / 2, i / 2);
+            //surface.transform.localScale = new Vector3(i / 2, i / 2, i / 2);
+            //corona.transform.localScale = new Vector3(i / 2, i / 2, i / 2);
+            //StartCoroutine("GrowthTimer");
+            supernovaActive = false;
         }
     }
 
@@ -160,6 +177,15 @@ public class BossThree : MonoBehaviour
         bossBarLength = (Screen.width / 2) * (hP / maxHP);
     }
    
+    public IEnumerator SupernoveTimer()
+    {
+        yield return new WaitForSecondsRealtime(.1f);
+        superNovaHP -= 2f;
+        if(supernova.transform.localScale == new Vector3(100,100,100))
+        {
+            
+        }
+    }
 }
 
 

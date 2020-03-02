@@ -215,6 +215,16 @@ public class CharacterScript : MonoBehaviour
             curHP = maxHP;
             OnGUI();
         }
+        if (other.gameObject.tag == "Star Chunk 3")
+        {
+            SceneManager.LoadScene("Victory");
+            //gameObject.transform.localScale = new Vector3(4, 4, 4);
+            //surface.transform.localScale = new Vector3(4, 4, 4);
+            //corona.transform.localScale = new Vector3(4, 4, 4);
+            maxHP = 3000;
+            curHP = maxHP;
+            OnGUI();
+        }
     }
 
     public void Shoot(float speed)
