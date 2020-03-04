@@ -4883,7 +4883,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   miner: {fileID: 8301553000370294792, guid: 80edffb15301b8a4a8d0508716897aea, type: 3}
   player: {fileID: 0}
-  growingBeam: {fileID: 3573766300121927657, guid: d3ff904c738c7674abde56bdd2f30189,
+  growingBeam: {fileID: 3573766300121927657, guid: 7a1b21599f52b3942bcf97ee7104e2dd,
     type: 3}
   growingExplosion: {fileID: 1923671301606549971, guid: 878bb925be48c2d4fb035479d358aea3,
     type: 3}
@@ -5098,6 +5098,7 @@ MonoBehaviour:
     m_StretchHeight: 0
   superNovaHP: 3000
   supernova: {fileID: 3009516733730419491}
+  supernovaActive: 1
 --- !u!1 &165318593288335411
 GameObject:
   m_ObjectHideFlags: 0

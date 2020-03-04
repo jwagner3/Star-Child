@@ -11,7 +11,7 @@ public class BossOne : MonoBehaviour
     public float maxHP = 1000;
     public float hP = 1000;
     bool explosionTimer = true;
-    int MoveSpeed = 4;
+    int MoveSpeed = 8;
     int MaxDist = 10;
     int MinDist = 50;
     int radius = 100;
@@ -29,8 +29,8 @@ public class BossOne : MonoBehaviour
         bossBarStyle.normal.textColor = Color.white;
         bossNameStyle.normal.textColor = Color.white;
         bossNameStyle.font = bossNameFont;
-        GUI.Box(new Rect(260, 900, bossBarLength, 30), "Lyrae, Tyrant of Uprising", bossNameStyle);
-        GUI.Box(new Rect(260, 950, bossBarLength, 20), hP + "/" + maxHP, bossBarStyle);
+        GUI.Box(new Rect(260, 800, bossBarLength, 30), "Lyrae, Tyrant of Uprising", bossNameStyle);
+        GUI.Box(new Rect(260, 850, bossBarLength, 20), hP + "/" + maxHP, bossBarStyle);
     }
     // Start is called before the first frame update
     void Start()
@@ -42,7 +42,6 @@ public class BossOne : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AdjustcurHealth(0);
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (!GameObject.FindGameObjectWithTag("Miner"))
         {
@@ -79,7 +78,7 @@ public class BossOne : MonoBehaviour
 
     public IEnumerator Timer()
     {
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(3);
         explosionTimer = true;  
     }
 

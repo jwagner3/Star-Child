@@ -36,7 +36,7 @@ public class Explosion : MonoBehaviour
     public IEnumerator Growth()
     {
        
-        for (int i = 1; i < 40; i++)
+        for (int i = 1; i < 60; i++)
         {
             yield return new WaitForSecondsRealtime(.05f);
             gameObject.transform.localScale = new Vector3(i, i, i);
@@ -44,7 +44,7 @@ public class Explosion : MonoBehaviour
             surface.transform.localScale = new Vector3(i , i, i);
             
             
-            if (i > 38)
+            if (i > 58)
             {
                              
                 Destroy(gameObject);

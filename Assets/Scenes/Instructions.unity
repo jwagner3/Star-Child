@@ -529,7 +529,7 @@ MonoBehaviour:
 
 
     Shoot Solar Flare:
-    R
+    Left Mouse Button
 
 
     Go Dark: SHIFT
@@ -538,12 +538,12 @@ MonoBehaviour:
     Turn Camera: Right Mouse Button
 
 
-    Ability 1:
-    C (Locked until 1st Boss is defeated)
+    Ability
+    1: C (Locked until 1st Boss is defeated)
 
 
-    Ability 2: Z (Locked until 2nd Boss
-    is defeated)'
+    Ability 2: Z (Locked until 2nd
+    Boss is defeated)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -612,10 +612,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -205.05872, w: 0}
   m_textInfo:
     textComponent: {fileID: 926539512}
-    characterCount: 207
+    characterCount: 223
     spriteCount: 0
-    spaceCount: 44
-    wordCount: 38
+    spaceCount: 46
+    wordCount: 40
     linkCount: 0
     lineCount: 17
     pageCount: 1

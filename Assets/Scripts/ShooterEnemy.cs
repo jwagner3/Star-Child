@@ -13,9 +13,9 @@ public class ShooterEnemy : MonoBehaviour
     double eReloadTimed;
     float erandomNum;
     public Transform player;
-    public int enemySpeed = 3;
-    int maxDist = 15;
-    int minDist = 10;
+    public int enemySpeed = 8;
+    int maxDist = 45;
+    int minDist = 30;
     float enemyDist;
     GameObject enemy;
     float timer;

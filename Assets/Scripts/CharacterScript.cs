@@ -114,7 +114,7 @@ public class CharacterScript : MonoBehaviour
             DynamicGI.UpdateEnvironment();
             StartCoroutine("BoostCooldown");
         }
-        if (Input.GetKeyDown("r") && reloaded)
+        if (Input.GetMouseButtonDown(0) && reloaded)
         {
             Shoot(speed);
             curHP -= 50;
