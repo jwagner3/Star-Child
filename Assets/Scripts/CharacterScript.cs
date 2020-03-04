@@ -36,6 +36,8 @@ public class CharacterScript : MonoBehaviour
     public Texture2D healthBarTexture;
     public GUIStyle healthBarStyle;
     private float healthBarlength;
+    public bool healthShow = true;
+
     Renderer darkMode;
     public Material bravoSix;
     public Material bravoSeven;
@@ -44,14 +46,29 @@ public class CharacterScript : MonoBehaviour
 
     public ParticleSystem corona;
     public ParticleSystem surface;
-    
+
+    public bool explosionNotifier = false;
+    public GUIStyle notifierStyle;
+
 
     void OnGUI()
     {
-        
-        healthBarStyle.onNormal.background = healthBarTexture;
-        GUI.Box(new Rect(260, 60, healthBarlength, 20), curHP + "/" + maxHP, healthBarStyle);
-       
+        if (healthShow)
+        {
+            healthBarStyle.onNormal.background = healthBarTexture;
+            GUI.Box(new Rect(260, 60, healthBarlength, 20), curHP + "/" + maxHP, healthBarStyle);
+        }
+        else
+        {
+            healthShow = true;
+        }
+
+        if (explosionNotifier)
+        {
+            notifierStyle.normal.textColor = Color.white;
+            GUI.Box(new Rect(260, 300, 100, 20), "Press X to use your Cascade Abiity", notifierStyle);
+            explosionNotifier = false;
+        }
     }
 
     public void Start()
@@ -63,6 +80,15 @@ public class CharacterScript : MonoBehaviour
     }
     void Update()
     {
+        if(SceneManager.GetActiveScene().name == "Load Scene 1" || SceneManager.GetActiveScene().name == "Load Scene 2" || SceneManager.GetActiveScene().name == "Load Scene 3")
+        {
+            Debug.Log("Scene");
+            healthShow = false;
+        }
+        else
+        {
+            healthShow = true;
+        }
         gameObject.transform.localScale = new Vector3(curHP / 500, curHP / 500, curHP / 500);
         corona.transform.localScale = new Vector3(curHP / 500, curHP / 500, curHP / 500);
         surface.transform.localScale = new Vector3(curHP / 500, curHP / 500, curHP / 500);
@@ -203,7 +229,9 @@ public class CharacterScript : MonoBehaviour
             //corona.transform.localScale = new Vector3(2, 2, 2);
             maxHP = 2000;
             curHP = maxHP;
-            OnGUI();
+            explosionNotifier = true;
+            healthShow = false;
+            
         }
         if (other.gameObject.tag == "Star Chunk 2")
         {
@@ -213,7 +241,8 @@ public class CharacterScript : MonoBehaviour
             //corona.transform.localScale = new Vector3(4, 4, 4);
             maxHP = 3000;
             curHP = maxHP;
-            OnGUI();
+            healthShow = false;
+
         }
         if (other.gameObject.tag == "Star Chunk 3")
         {
@@ -223,7 +252,7 @@ public class CharacterScript : MonoBehaviour
             //corona.transform.localScale = new Vector3(4, 4, 4);
             maxHP = 3000;
             curHP = maxHP;
-            OnGUI();
+            healthShow = false;
         }
     }
 
