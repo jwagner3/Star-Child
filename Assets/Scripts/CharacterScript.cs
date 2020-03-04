@@ -143,7 +143,7 @@ public class CharacterScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && reloaded)
         {
             Shoot(speed);
-            curHP -= 50;
+            curHP -= 20;
             reloaded = false;
             StartCoroutine("Reload");
             

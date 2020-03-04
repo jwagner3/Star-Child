@@ -22,6 +22,7 @@ public class BossOne : MonoBehaviour
     private float bossBarLength;
     public GUIStyle bossNameStyle;
     public Font bossNameFont;
+    public ParticleSystem deathExplosion;
 
     public void OnGUI()
     {
@@ -42,6 +43,8 @@ public class BossOne : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        AdjustcurHealth(0);
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (!GameObject.FindGameObjectWithTag("Miner"))
         {
@@ -59,8 +62,8 @@ public class BossOne : MonoBehaviour
         }
         if(hP <= 0)
         {
-            Instantiate(starChunk, transform.position, transform.rotation);
-            Destroy(gameObject);
+           
+            StartCoroutine("DeathTimer");
         }
     }
 
@@ -101,6 +104,14 @@ public class BossOne : MonoBehaviour
         if (maxHP < 1)
             maxHP = 1;
         bossBarLength = (Screen.width / 2) * (hP / maxHP);
+    }
+    public IEnumerator DeathTimer()
+    {
+        deathExplosion.Play();
+
+        yield return new WaitForSecondsRealtime(1);
+        Instantiate(starChunk, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
     

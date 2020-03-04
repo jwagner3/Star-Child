@@ -17,6 +17,7 @@ TagManager:
   - Boss Three
   - Player Beam
   - Bullet
+  - Player Explosion
   layers:
   - Default
   - TransparentFX

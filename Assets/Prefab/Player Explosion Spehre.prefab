@@ -4769,7 +4769,7 @@ GameObject:
   - component: {fileID: 3552175382382955545}
   m_Layer: 0
   m_Name: Player Explosion Spehre
-  m_TagString: Explosion
+  m_TagString: Player Explosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

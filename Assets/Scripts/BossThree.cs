@@ -33,6 +33,8 @@ public class BossThree : MonoBehaviour
     public ParticleSystem supernova;
     public bool supernovaActive = true;
 
+    public ParticleSystem deathExplosion;
+
     public void OnGUI()
     {
         bossBarStyle.onNormal.background = bossBarTexture;
@@ -86,7 +88,7 @@ public class BossThree : MonoBehaviour
         if (hP <= 0)
         {
             Instantiate(starChunk, transform.position, transform.rotation);
-            Destroy(gameObject);
+            StartCoroutine("DeathTimer");
         }
         
         if(superNovaHP <= 0 && supernovaActive)
@@ -116,7 +118,7 @@ public class BossThree : MonoBehaviour
 
 
         yield return new WaitForSecondsRealtime(5);
-        Instantiate(growingExplosion, gameObject.transform.position, gameObject.transform.rotation);
+        
         StartCoroutine("Timer");
     }
 
@@ -180,11 +182,19 @@ public class BossThree : MonoBehaviour
     public IEnumerator SupernoveTimer()
     {
         yield return new WaitForSecondsRealtime(.1f);
-        superNovaHP -= 2f;
+        superNovaHP -= 1f;
         if(supernova.transform.localScale == new Vector3(100,100,100))
         {
-            
+            SceneManager.LoadScene("Defeat");
         }
+    }
+    public IEnumerator DeathTimer()
+    {
+        deathExplosion.Play();
+
+        yield return new WaitForSecondsRealtime(1);
+        Instantiate(starChunk, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
 

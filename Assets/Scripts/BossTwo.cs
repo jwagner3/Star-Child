@@ -24,6 +24,8 @@ public class BossTwo : MonoBehaviour
     public GUIStyle bossNameStyle;
     public Font bossNameFont;
 
+    public ParticleSystem deathExplosion;
+
     public void OnGUI()
     {
         bossBarStyle.onNormal.background = bossBarTexture;
@@ -61,8 +63,8 @@ public class BossTwo : MonoBehaviour
         }
         if (hP <= 0)
         {
-            Instantiate(starChunk, transform.position, transform.rotation);
-            Destroy(gameObject);
+            
+            StartCoroutine("DeathTimer");
         }
     }
 
@@ -106,7 +108,14 @@ public class BossTwo : MonoBehaviour
             maxHP = 1;
         bossBarLength = (Screen.width / 2) * (hP / maxHP);
     }
+    public IEnumerator DeathTimer()
+    {
+        deathExplosion.Play();
 
+        yield return new WaitForSecondsRealtime(1);
+        Instantiate(starChunk, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
 }
 
 
