@@ -18,6 +18,7 @@ TagManager:
   - Player Beam
   - Bullet
   - Player Explosion
+  - Star Chunk 3
   layers:
   - Default
   - TransparentFX

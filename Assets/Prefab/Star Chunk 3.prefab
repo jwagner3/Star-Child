@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7489128144332963263}
   - component: {fileID: 6185569066437181502}
   m_Layer: 0
-  m_Name: Star Chunk 2
-  m_TagString: Star Chunk 2
+  m_Name: Star Chunk 3
+  m_TagString: Star Chunk 3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

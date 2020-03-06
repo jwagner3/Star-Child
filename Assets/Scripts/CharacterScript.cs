@@ -100,6 +100,7 @@ public class CharacterScript : MonoBehaviour
         if (curHP <= 0)
         {
             SceneManager.LoadScene("Defeat");
+            Destroy(gameObject);
         }
         CharacterController controller = GetComponent<CharacterController>();
         AdjustcurHealth(0);
@@ -149,7 +150,7 @@ public class CharacterScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && reloaded)
         {
             Shoot(speed);
-            curHP -= 20;
+            curHP -= 25;
             reloaded = false;
             StartCoroutine("Reload");
             

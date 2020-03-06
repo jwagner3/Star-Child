@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class DeadMiner : MonoBehaviour
@@ -16,7 +17,19 @@ public class DeadMiner : MonoBehaviour
 
     void Update()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        
+        if(SceneManager.GetActiveScene().name != "Victory")
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        else
+        {
+            
+        }
+        if (!target)
+        {
+            Destroy(gameObject);
+        }
         Vector3 relativePos = (target.position + new Vector3(0, 1.5f, 0)) - transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePos);
 
