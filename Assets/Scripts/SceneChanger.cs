@@ -8,8 +8,12 @@ public class SceneChanger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(SceneManager.GetActiveScene().name != "Title" && SceneManager.GetActiveScene().name != "Instructions")
-        StartCoroutine("LoadScreen");
+        if (SceneManager.GetActiveScene().name != "Title" && SceneManager.GetActiveScene().name != "Instructions")
+        {
+
+
+            StartCoroutine("LoadScreen");
+        }
     }
 
     // Update is called once per frame
@@ -25,7 +29,7 @@ public class SceneChanger : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Load Screen 1");
     }
 
     public void Defeat()
@@ -35,7 +39,7 @@ public class SceneChanger : MonoBehaviour
 
     public IEnumerator LoadScreen()
     {
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(7);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

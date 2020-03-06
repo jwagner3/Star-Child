@@ -14,8 +14,8 @@ public class ShooterEnemy : MonoBehaviour
     float erandomNum;
     public Transform player;
     public int enemySpeed = 8;
-    int maxDist = 45;
-    int minDist = 30;
+    int maxDist = 50;
+    int minDist = 50;
     float enemyDist;
     GameObject enemy;
     float timer;

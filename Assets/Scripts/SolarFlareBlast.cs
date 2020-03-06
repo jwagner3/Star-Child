@@ -58,6 +58,15 @@ public class SolarFlareBlast : MonoBehaviour
         if (collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "Player Explosion")
             Destroy(gameObject);
 
+       
+        if(gameObject.tag == "Bullet")
+        {
+            if(collision.gameObject.tag == "Player")
+            {
+                Destroy(gameObject);
+            }
+        }
+
     }
 
     public IEnumerator Timer()

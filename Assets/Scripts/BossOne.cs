@@ -30,8 +30,8 @@ public class BossOne : MonoBehaviour
         bossBarStyle.normal.textColor = Color.white;
         bossNameStyle.normal.textColor = Color.white;
         bossNameStyle.font = bossNameFont;
-        GUI.Box(new Rect(260, 800, bossBarLength, 30), "Lyrae, Tyrant of Uprising", bossNameStyle);
-        GUI.Box(new Rect(260, 850, bossBarLength, 20), hP + "/" + maxHP, bossBarStyle);
+        GUI.Box(new Rect(260, 950, bossBarLength, 30), "Lyrae, Tyrant of Uprising", bossNameStyle);
+        GUI.Box(new Rect(260, 1000, bossBarLength, 20), hP + "/" + maxHP, bossBarStyle);
     }
     // Start is called before the first frame update
     void Start()

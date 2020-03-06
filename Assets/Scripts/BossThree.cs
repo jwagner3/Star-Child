@@ -10,8 +10,8 @@ public class BossThree : MonoBehaviour
     public Transform player;
     public GameObject growingBeam;
     public GameObject growingExplosion;
-    public float maxHP = 3000;
-    public float hP = 3000;
+    public float maxHP = 1500;
+    public float hP = 1500;
     bool beamTimer = true;
     bool growthTimer = true;
     bool explosionTimer = true;

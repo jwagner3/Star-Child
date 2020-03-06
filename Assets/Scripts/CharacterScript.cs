@@ -99,7 +99,7 @@ public class CharacterScript : MonoBehaviour
         surface.transform.localScale = new Vector3(curHP / 500, curHP / 500, curHP / 500);
         if (curHP <= 0)
         {
-            SceneManager.LoadScene("Defeat");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Destroy(gameObject);
         }
         CharacterController controller = GetComponent<CharacterController>();
@@ -150,7 +150,7 @@ public class CharacterScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && reloaded)
         {
             Shoot(speed);
-            curHP -= 25;
+            curHP -= 20;
             reloaded = false;
             StartCoroutine("Reload");
             

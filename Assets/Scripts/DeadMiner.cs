@@ -7,7 +7,7 @@ public class DeadMiner : MonoBehaviour
 {
     public Transform target;
     public Transform player;
-    public float minDistance = 200;
+    public float minDistance = 100;
     public float moveSpeed = 30;
 
     private void Start()
