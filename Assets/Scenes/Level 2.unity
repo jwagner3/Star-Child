@@ -640,7 +640,7 @@ PrefabInstance:
         type: 3}
       propertyPath: growingBeam
       value: 
-      objectReference: {fileID: 3573766300121927657, guid: d3ff904c738c7674abde56bdd2f30189,
+      objectReference: {fileID: 3573766300121927657, guid: 7a1b21599f52b3942bcf97ee7104e2dd,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01622d65473e1334cad03dd0f22b142e, type: 3}

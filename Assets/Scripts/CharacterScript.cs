@@ -50,12 +50,17 @@ public class CharacterScript : MonoBehaviour
     public bool explosionNotifier = false;
     public GUIStyle notifierStyle;
 
+    public GUIStyle hStyle;
+
 
     void OnGUI()
     {
-        if (healthShow)
+        if (SceneManager.GetActiveScene().name == "Level 1" || SceneManager.GetActiveScene().name == "Level 2" || SceneManager.GetActiveScene().name == "Level 3")
         {
             healthBarStyle.onNormal.background = healthBarTexture;
+            hStyle.fontSize = 12;
+            hStyle.normal.textColor = Color.white;
+            GUI.Box(new Rect(260, 30, healthBarlength/2, 20), "H", hStyle);
             GUI.Box(new Rect(260, 60, healthBarlength, 20), curHP + "/" + maxHP, healthBarStyle);
         }
         else
@@ -94,7 +99,7 @@ public class CharacterScript : MonoBehaviour
         surface.transform.localScale = new Vector3(curHP / 500, curHP / 500, curHP / 500);
         if (curHP <= 0)
         {
-            //SceneManager.LoadScene("Defeat");
+            SceneManager.LoadScene("Defeat");
         }
         CharacterController controller = GetComponent<CharacterController>();
         AdjustcurHealth(0);
@@ -107,13 +112,14 @@ public class CharacterScript : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 1000))
         {
-
+            if(Physics.Raycast(ray, out hit, 1000))
             transform.LookAt(hit.point);
             
         }
         if (gameObject)
         Cursor.lockState = CursorLockMode.Confined;
 
+        LayerMask environment = LayerMask.GetMask("Environment");
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Zorical"), Input.GetAxis("Vertical"));
             moveDirection = gameObject.transform.TransformDirection(moveDirection);
@@ -181,8 +187,14 @@ public class CharacterScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Miner" && !boostUsed)
         {
-            curHP -= 150;
+            curHP -= 100;
             Destroy(collision.gameObject);
+            Debug.Log(curHP);
+        }
+        if (collision.gameObject.tag == "Boss 1" && !boostUsed)
+        {
+            curHP -= 100;
+            
             Debug.Log(curHP);
         }
     }
@@ -227,7 +239,7 @@ public class CharacterScript : MonoBehaviour
             //gameObject.transform.localScale = new Vector3(2, 2, 2);
             //surface.transform.localScale = new Vector3(2, 2, 2);
             //corona.transform.localScale = new Vector3(2, 2, 2);
-            maxHP = 2000;
+            maxHP = 2500;
             curHP = maxHP;
             explosionNotifier = true;
             healthShow = false;
@@ -239,7 +251,7 @@ public class CharacterScript : MonoBehaviour
             //gameObject.transform.localScale = new Vector3(4, 4, 4);
             //surface.transform.localScale = new Vector3(4, 4, 4);
             //corona.transform.localScale = new Vector3(4, 4, 4);
-            maxHP = 3000;
+            maxHP = 4500;
             curHP = maxHP;
             healthShow = false;
 

@@ -8,8 +8,8 @@ public class BossTwo : MonoBehaviour
     public GameObject miner;
     public Transform player;
     public GameObject growingBeam;
-    public float maxHP = 2000;
-    public float hP = 2000;
+    public float maxHP = 3000;
+    public float hP = 3000;
     bool beamTimer = true;
     int MoveSpeed = 4;
     int MaxDist = 10;

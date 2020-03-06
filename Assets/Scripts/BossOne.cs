@@ -8,8 +8,8 @@ public class BossOne : MonoBehaviour
     public GameObject miner;
     public Transform player;
     public GameObject growingExplosion;
-    public float maxHP = 1000;
-    public float hP = 1000;
+    public float maxHP = 1500;
+    public float hP = 1500;
     bool explosionTimer = true;
     int MoveSpeed = 8;
     int MaxDist = 10;

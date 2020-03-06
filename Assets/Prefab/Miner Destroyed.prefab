@@ -4767,6 +4767,7 @@ GameObject:
   - component: {fileID: 8301553000370294789}
   - component: {fileID: 8301553000370294791}
   - component: {fileID: -7345102832393739842}
+  - component: {fileID: 8397601837955252991}
   m_Layer: 0
   m_Name: Miner Destroyed
   m_TagString: Miner
@@ -4866,6 +4867,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8397601837955252991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301553000370294792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c81ac3bea461406489068b3612db32ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  player: {fileID: 0}
+  minDistance: 200
+  moveSpeed: 30
 --- !u!1001 &7260931744158495420
 PrefabInstance:
   m_ObjectHideFlags: 0

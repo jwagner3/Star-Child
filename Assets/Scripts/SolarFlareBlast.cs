@@ -55,6 +55,8 @@ public class SolarFlareBlast : MonoBehaviour
             Destroy(gameObject);
         if (collision.gameObject.tag == "Boss Three")
             Destroy(gameObject);
+        if (collision.gameObject.tag == "Explosion" || collision.gameObject.tag == "Player Explosion")
+            Destroy(gameObject);
 
     }
 

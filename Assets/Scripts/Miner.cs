@@ -55,7 +55,7 @@ public class Miner : MonoBehaviour
             StartCoroutine("Timer");
 
         }
-        if(collision.gameObject.tag == "Explosion")
+        if(collision.gameObject.tag == "Explosion" && collision.gameObject.tag == "Player Explosion")
         {
             StartCoroutine("Timer");
         }

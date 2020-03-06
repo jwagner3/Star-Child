@@ -129,7 +129,7 @@ public class BossThree : MonoBehaviour
     }
     public IEnumerator Timer()
     {
-        yield return new WaitForSecondsRealtime(1);
+        yield return new WaitForSecondsRealtime(3);
         beamTimer = true;
     }
 

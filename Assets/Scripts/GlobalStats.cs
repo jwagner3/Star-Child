@@ -17,7 +17,10 @@ public class GlobalStats : MonoBehaviour
         globalStats = player.GetComponent<CharacterScript>();
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        UpdatePlayerStats();
+    }
 
 
     public void UpdatePlayerStats()
